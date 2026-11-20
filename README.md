@@ -70,6 +70,20 @@ Optimized for line-rate packet ingestion, real-time IDS sensor feeds, and embedd
 ### 2. Deep Forensics & Threat Analytics (`--mode=deep`)
 Optimized for incident response, malware traffic analysis (MTA), and SOC telemetry. Reassembles 5-tuple TCP conversation flows, monitors inter-arrival packet timing jitter, computes sliding-window Shannon entropy on SNI hostnames to detect Domain Generation Algorithms (DGA), and flags anomalies (e.g. direct-IP TLS connections without SNI, low-cipher enumeration).
 
+## JA4S, JA4X, PCAP-NG and Signatures (0.2.0)
+
+- JA4S: ServerHello fingerprints, with flags for deprecated TLS versions and weak cipher suites.
+- JA4X: certificate fingerprints from a minimal X.509 DER parser.
+- PCAP-NG captures with multiple interfaces, as well as classic PCAP, from a file or stdin.
+- Bounded TCP reassembly for ClientHellos split across segments and for coalesced handshake records.
+- A built-in signature database with categories, which `-sigs custom.json` can extend.
+
+```bash
+sard -r capture.pcapng -mode deep -report-json > report.json
+sard -r capture.pcap -filter-category scanner -json
+sard -r - -sigs my-signatures.json -alert < capture.pcap
+```
+
 ## Installation
 
 ```bash

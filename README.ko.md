@@ -94,6 +94,14 @@ python3 .github/scripts/repo_guard.py . --strict
 go test -v -race ./...
 ```
 
+## 0.2.0 변경 사항
+
+- ServerHello 기반 JA4S, X.509 인증서 기반 JA4X 지문
+- 다중 인터페이스 PCAP-NG 지원, 표준 입력(`-r -`) 지원
+- 세그먼트로 분할된 ClientHello와 병합된 레코드를 처리하는 제한된 TCP 재조립
+- 범주별 JA4/JA4S/JA4X 시그니처 데이터베이스, `-sigs`로 사용자 JSON 추가
+- 비콘 탐지, `-filter-ja4s`, `-filter-category`, `-alert`, `-report-json`
+
 ## 라이선스
 
 MIT License. Copyright (c) 2026 Jeong Hoon Kim (Aether Systems & Research Lab).
